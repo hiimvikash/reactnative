@@ -45,3 +45,38 @@
           value={isEnabled}
         />` it's like a toggle button.
     - `<StatusBar>` - Component to control the app's status bar. The status bar is the zone, typically at the top of the screen, that displays the current time, Wi-Fi and cellular network information, battery level and/or other status icons.
+- To extract id : `const {id} = useLocalSearchParams()`
+
+# How to start with Restate-project?
+1. [Do this first.](https://docs.expo.dev/tutorial/create-your-first-app/)
+2. `npm run reset-project`
+3. `npx expo start`
+4. REMOVE APPEXAMPLE FOLDER
+5. Install [NativeWind](https://www.nativewind.dev/getting-started/react-native)
+6. [Splash screen](https://docs.expo.dev/tutorial/configuration/) 
+    ```"expo-router",
+      [
+        "expo-splash-screen",
+        {
+          "image": "./assets/images/splash-icon.png",
+          "resizeMode": "cover",
+          "backgroundColor": "#ffffff",
+          "enableFullScreenImage_legacy" : true
+        }
+      ],```
+6. make `sign-in.tsx`
+## Setup Google auth
+8. head to [Google cloud console](https://console.cloud.google.com)
+9. create new project and select project.
+10. Search `Google Auth Platform`.
+11. Head to `client` tab and `Get started` to `Project configuration` form.
+12. Create OAuth client ID - paste `Authorised redirect URIs` from Appwrite.
+13. Copy `clientId` & `clientsecret` and paste in appwrite.
+14. Now create another platform webapp from `overview` tab.
+15. make `env.local` and paste your `EXPO_PUBLIC_APPWRITE_PROJECT_ID` & `EXPO_PUBLIC_APPWRITE_ENDPOINT=https://cloud.appwrite.io/v1`
+16. In `lib/apwrite.ts` make `login()`, `logout()` and `getCurrentUser()`
+17. Make `useAppwrite` hook to call any function which returns promise and takes params.
+18. Wrap your root layout with `GlobalProvider`(responsible for fetching current session).
+19. Make tabs in `_layout.tsx` to share across different screen.
+20. Make `profile` tab and implement logout functionality.
+21. 
